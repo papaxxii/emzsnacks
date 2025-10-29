@@ -1,0 +1,133 @@
+/* E&M'z Minute Snacks - main stylesheet
+   Contains essential layout, accessibility helpers and small UI components.
+   This file is intentionally minimal and complements existing vendor CSS files
+   (bootstrap.css, font-awesome, etc.) referenced by index.html.
+*/
+
+:root{
+  --brand-bg: #1B2021;
+  --brand-contrast: #ffd166;
+  --panel-bg: #ffffff;
+  --panel-text: #222;
+}
+
+/* Basic page defaults (non-destructive) */
+html,body{height:100%;margin:0;padding:0;font-family:GillSans, Arial, sans-serif;color:#fff;background:#823E02}
+
+/* Header / logo */
+.pageHeader{position:fixed;z-index:100;right:0;top:0;width:100%;height:3.125em;background:var(--brand-bg);border-bottom:1px solid rgba(255,255,255,0.14);}
+.pageHeader .headerLogo{display:block;width:calc(100% - 15em);height:100%;margin:auto;text-align:left;padding-left:0.75rem;color:white;}
+.pageHeader .headerLogo img.logo-img{height:1.9em;vertical-align:middle}
+.pageHeader .headerLogo .text{display:inline-block;vertical-align:middle;margin-left:0.5rem;text-transform:uppercase;font-weight:700}
+
+/* Make menu trigger visible and accessible */
+.pageHeader .menu-trigger{background:transparent;border:0;color:white}
+.pageHeader .menu-trigger[aria-label]{cursor:pointer}
+
+/* Panels for snack cards */
+.panel{background:var(--panel-bg);color:var(--panel-text);border-radius:6px;padding:12px;margin:8px 0;box-shadow:0 1px 4px rgba(0,0,0,0.12)}
+.panel .panel-heading{font-weight:700;margin-bottom:6px}
+.panel .panel-body{font-size:0.95em}
+.panel .panel-body .text-muted{color:#666;margin-top:6px}
+.panel .panel-body .h4{margin-top:8px}
+.panel .panel-body button.btn{margin-top:10px}
+
+/* Auth notice */
+.auth-note{background:#fff3d9;color:#222;padding:10px;border-radius:4px;margin-bottom:12px}
+
+/* spacers */
+.spacer.small{height:10px}
+
+/* Accessibility helpers */
+.skip-link{position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden}
+.skip-link:focus{left:10px;top:10px;width:auto;height:auto;padding:8px 12px;background:#fff;color:#222;z-index:1000;border-radius:4px}
+.sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
+
+/* Hide items until JS toggles them (auth state) */
+[data-emnz-user],[data-emnz-admin]{display:none}
+
+/* Focus outlines for keyboard users */
+a:focus,button:focus,input:focus,textarea:focus{outline:3px solid var(--brand-contrast);outline-offset:2px}
+
+/* Footer small tweaks */
+.pageFooter{padding:1em 0;text-align:center}
+.pageFooter .btnContainer{display:inline-block;margin:0 8px}
+
+/* Responsive tweaks */
+@media screen and (min-width:1200px){
+  .pageHeader{left:0;right:auto;height:5em;width:5.5625em;background:transparent}
+  .pageHeader .headerLogo{width:19.6875em;padding:0.9375em 0;text-align:left;color:#606669}
+  .pageHeader .headerLogo .text{opacity:1;color:#606669}
+  .pageHeader .headerLogo img.logo-img{height:2.6em}
+}
+
+/* Small utilities */
+.text-muted{color:#8a8a8a}
+.h4{font-size:1.2em}
+
+/* Make sure images are responsive */
+img{max-width:100%;height:auto;display:block}
+
+/* Responsive header & mobile menu improvements */
+.pageHeader{display:flex;align-items:center;justify-content:space-between;padding:0 0.75rem}
+.pageHeader .headerLogo{width:auto;flex:1;display:flex;align-items:center}
+.pageHeader .headerLogo img.logo-img{height:2.2rem}
+.pageHeader .menu-trigger{display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:6px}
+.pageHeader .menu-trigger .lines{display:inline-block;width:22px;height:2px;background:#fff;position:relative}
+.pageHeader .menu-trigger .lines:before,.pageHeader .menu-trigger .lines:after{content:'';position:absolute;left:0;width:22px;height:2px;background:#fff}
+.pageHeader .menu-trigger .lines:before{top:-7px}
+.pageHeader .menu-trigger .lines:after{top:7px}
+.pageHeader .menu-trigger:focus{box-shadow:0 0 0 3px rgba(255,209,102,0.18)}
+
+/* Hide sidebar by default on small screens; preserved for large screens */
+.sidebar{display:none}
+
+@media screen and (min-width:900px){
+  .pageHeader{height:5.2em;padding:0}
+  .pageHeader .menu-trigger{display:none}
+  .sidebar{display:block}
+}
+
+/* Shop catalog grid: responsive cards with comfortable touch targets */
+[data-emnz-catalog]{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
+  gap:16px;
+  align-items:start;
+}
+
+[data-emnz-catalog] .panel{padding:14px;border-radius:8px}
+[data-emnz-catalog] .panel .panel-heading{font-size:1.05rem}
+[data-emnz-catalog] .panel .panel-body{display:flex;flex-direction:column;align-items:flex-start;gap:8px}
+[data-emnz-catalog] .panel .btn{width:100%;padding:10px 12px;border-radius:6px}
+
+/* Smaller screens: slightly denser grid */
+@media screen and (max-width:420px){
+  [data-emnz-catalog]{grid-template-columns:repeat(2,minmax(120px,1fr));gap:10px}
+  .pageHeader .headerLogo img.logo-img{height:1.8rem}
+}
+
+/* Improve visual contrast for panels on warm background */
+.panel{background:linear-gradient(180deg,#fff,#fff);}
+
+/* Sidebar open state for mobile (slide-in) */
+.sidebar.open{
+  display:block;
+  position:fixed;
+  left:0;
+  top:0;
+  height:100%;
+  width:260px;
+  background:var(--panel-bg);
+  color:var(--panel-text);
+  z-index:300;
+  padding:1rem;
+  box-shadow:2px 0 12px rgba(0,0,0,0.18);
+  overflow:auto;
+}
+
+/* When sidebar is open, push main content for small screens (light effect) */
+@media screen and (max-width:899px){
+  .pushWrapper{transform:translateX(0);transition:transform .28s ease}
+  .sidebar.open + main{transform:translateX(260px)}
+}
