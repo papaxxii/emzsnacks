@@ -19,6 +19,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title> E&M’z Minute Snacks </title>
+	<meta name="theme-color" content="#ffd166">
+	<!-- Preload hero image for faster Largest Contentful Paint -->
+	<link rel="preload" href="images/banana_chips.jpg" as="image">
+
+	<!-- JSON-LD: LocalBusiness info for SEO -->
+	<script type="application/ld+json">
+	{
+	  "@context": "https://schema.org",
+	  "@type": "FoodEstablishment",
+	  "name": "E&amp;M'z Minute Snacks",
+	  "url": "https://emzsnacks-88225.web.app/",
+	  "logo": "https://emzsnacks-88225.web.app/Hinunangan/images/logo.png",
+	  "description": "Quick, tasty Filipino snacks delivered to your location - banana chips, chicharon, otap, kwek-kwek and more.",
+	  "address": {
+	    "@type": "PostalAddress",
+	    "addressLocality": "Hinunangan",
+	    "addressCountry": "PH"
+	  },
+	  "telephone": "",
+	  "sameAs": []
+	}
+	</script>
 	<!-- Windows 8 Tiles -->
 	<meta name="msapplication-TileColor" content="#FFFFFF"/>
 	<!-- ****** faviconit.com favicons ****** -->
@@ -55,7 +77,15 @@
 		    <!-- Sidebar -->
 			<div class="sidebar">
 
-				<nav class="mainMenu">
+				<!-- Sidebar brand (shown on wide screens) -->
+				<div class="sidebar-brand">
+					<a class="sidebarLogo smoothScroll" href="#section-intro" title="E&amp;M'z Minute Snacks">
+						<img class="logo-img" src="images/logo.png" alt="E&amp;M'z Logo">
+						<span class="text">E&amp;M'z Minute Snacks</span>
+					</a>
+				</div>
+
+				<nav class="mainMenu" role="navigation" aria-label="Main menu">
 					<ul class="menu">
 						<li>
 							<a class="smoothScroll" href="#timeline-part" title="What is E&M'z"><i class="step icon-question size-24"></i><span class="text">What is E&M'z?</span></a>
@@ -97,7 +127,7 @@
 					</ul>
 				</nav>
 
-				<nav class="backToTop">
+				<nav class="backToTop" role="navigation" aria-label="Back to top">
 					<ul class="backToTop-menu">
 						<li><a class="smoothScroll" href="#section-intro" title="to the top"><i class="fa fa-chevron-up"></i><span class="text">Back to top</span></a></li>
 					</ul>
@@ -106,7 +136,7 @@
 			</div>
 
 			<!-- Share Menu -->
-			<nav class="shareMenu">
+			<nav class="shareMenu" role="navigation" aria-label="Share menu">
 				<a href="#" class="share-menu-trigger" role="button" aria-label="Share" title="Share">
 					<i class="fa fa-share-alt" aria-hidden="true"></i>
 					<span class="sr-only">Share</span>
@@ -117,7 +147,7 @@
 					<!-- Facebook - ADD HERE -->
 					
 					<!-- Twitter - ADD HERE -->
-					<a href="https://twitter.com/share" class="twitter-share-button" data-via="TaphaNgum">Tweet</a>
+					<a href="https://twitter.com/share" class="twitter-share-button" data-via="TaphaNgum" rel="noopener noreferrer" target="_blank">Tweet</a>
 					<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 					
 					
@@ -1014,7 +1044,7 @@
 			
 			<footer class="pageFooter">
 				<div class="btnContainer">
-					<a class="gc-link" href="#" target="_blank" aria-label="Gcash link" title="Gcash link"><i class="icon-handcrafted" aria-hidden="true"></i><span class="sr-only">Gcash</span></a>
+					<a class="gc-link" href="#" target="_blank" rel="noopener noreferrer" aria-label="Gcash link" title="Gcash link"><i class="icon-handcrafted" aria-hidden="true"></i><span class="sr-only">Gcash</span></a>
 				</div>
 
 				<div class="btnContainer">
