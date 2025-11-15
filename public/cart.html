@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Cart — E&amp;M'z Minute Snacks</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="icon" href="/assets/fav.ico">
+</head>
+<body>
+  <header class="site-header"><div class="container"><a class="brand" href="index.html"><img src="assets/images/logo.png" alt="logo"/>E&amp;M'z</a></div></header>
+
+  <main class="container">
+    <h2>Your Cart</h2>
+    <div id="cart-container" class="card loading-placeholder">Loading cart…</div>
+  </main>
+
+  <script type="module">
+    import { initializeFirebase } from './js/firebase-init.js';
+    import { initCartPage } from './js/cart.js';
+    initializeFirebase().then(()=>initCartPage({containerId:'cart-container'}));
+  </script>
+</body>
+</html>

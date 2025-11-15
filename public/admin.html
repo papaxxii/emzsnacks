@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Admin — E&amp;M'z Minute Snacks</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="icon" href="/assets/fav.ico">
+</head>
+<body>
+  <header class="site-header"><div class="container"><a class="brand" href="index.html">Admin</a><nav class="main-nav"><button id="admin-logout" class="btn ghost">Logout</button></nav></div></header>
+
+  <main class="container admin-layout">
+    <section class="panel">
+      <h3>Products</h3>
+      <button id="add-product-btn" class="btn primary">Add Product</button>
+      <div id="products-list" class="admin-list">Loading…</div>
+    </section>
+
+    <section class="panel">
+      <h3>Orders</h3>
+      <div id="orders-list" class="admin-list">Loading…</div>
+    </section>
+  </main>
+
+  <div id="product-modal" class="modal hidden">
+    <div class="modal-inner">
+      <button id="close-product-modal" class="close">×</button>
+      <form id="product-form">
+        <input name="title" placeholder="Title" required/><br/><br/>
+        <input name="price" type="number" step="0.01" placeholder="Price" required/><br/><br/>
+        <select name="category"><option value="cookies">Cookies</option><option value="pastries">Pastries</option><option value="drinks">Drinks</option></select><br/><br/>
+        <textarea name="desc" placeholder="Description"></textarea><br/><br/>
+        <input name="image" type="file" accept="image/*"/><br/><br/>
+        <button class="btn primary" type="submit">Save</button>
+      </form>
+    </div>
+  </div>
+
+  <script type="module">
+    import { initializeFirebase } from './js/firebase-init.js';
+    import { initAdmin } from './js/admin.js';
+    initializeFirebase().then(()=>initAdmin({productsListId:'products-list',ordersListId:'orders-list'}));
+  </script>
+</body>
+</html>

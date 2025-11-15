@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Product — E&amp;M'z Minute Snacks</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="icon" href="/assets/fav.ico">
+</head>
+<body>
+  <header class="site-header"><div class="container"><a class="brand" href="index.html"><img src="assets/images/logo.png" alt="logo"/>E&amp;M'z Minute Snacks</a></div></header>
+
+  <main class="container">
+    <div id="product-detail" class="card loading-placeholder">Loading product…</div>
+  </main>
+
+  <script type="module">
+    import { initializeFirebase } from './js/firebase-init.js';
+    import { initProduct } from './js/product.js';
+    initializeFirebase().then(()=>initProduct({detailId:'product-detail'}));
+  </script>
+</body>
+</html>
